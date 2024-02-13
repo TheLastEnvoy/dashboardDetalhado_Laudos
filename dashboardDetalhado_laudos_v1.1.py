@@ -11,12 +11,9 @@ df = pd.read_excel(file_path)
 st.title("Análise de Laudos")
 
 # Lista de todos os técnicos, tipos de laudo e assentamentos
-tecnicos = list(df['Técnico'].unique())
-tecnicos.append("Todos")
-tipos_de_laudo = list(df['Tipo de Laudo'].unique())
-tipos_de_laudo.append("Todos")
-assentamentos = list(df['Assentamento'].unique())
-assentamentos.append("Todos")
+tecnicos = ['Todos'] + list(df['Técnico'].unique())
+tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
+assentamentos = ['Todos'] + list(df['Assentamento'].unique())
 
 # Filtrar por técnico
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
