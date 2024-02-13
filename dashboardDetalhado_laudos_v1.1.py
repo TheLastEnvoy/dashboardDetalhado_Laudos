@@ -15,6 +15,12 @@ tecnicos = ['Todos'] + list(df['Técnico'].unique())
 tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
 assentamentos = ['Todos'] + list(df['Assentamento'].unique())
 
+# Data inicial padrão: 01/01/2022
+start_date = datetime(2022, 1, 1).date()
+
+# Data final padrão: dia atual
+end_date = datetime.now().date()
+
 # Filtrar por técnico
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
 if selected_tecnico != "Todos":
@@ -33,8 +39,8 @@ if selected_tipo_laudo != "Todos":
     filtered_df = filtered_df[filtered_df['Tipo de Laudo'] == selected_tipo_laudo]
 
 # Filtrar por data
-start_date = st.sidebar.date_input("Data inicial:", min(pd.to_datetime(filtered_df['Data'], format='%d/%m/%Y')).date())
-end_date = st.sidebar.date_input("Data final:", max(pd.to_datetime(filtered_df['Data'], format='%d/%m/%Y')).date())
+start_date = st.sidebar.date_input("Data inicial:", start_date)
+end_date = st.sidebar.date_input("Data final:", end_date)
 filtered_df['Data'] = pd.to_datetime(filtered_df['Data'], format='%d/%m/%Y').dt.date
 filtered_df = filtered_df[(filtered_df['Data'] >= start_date) & (filtered_df['Data'] <= end_date)]
 
