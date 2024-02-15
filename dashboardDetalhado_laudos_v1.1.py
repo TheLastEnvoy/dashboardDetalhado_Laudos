@@ -8,7 +8,7 @@ file_path = "laudos_SO_sharepoint_11022024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
-st.title("Análise de Laudos")
+st.title("Relação de laudos")
 
 # Lista de todos os técnicos, tipos de laudo e assentamentos
 tecnicos = ['Todos'] + list(df['Técnico'].unique())
