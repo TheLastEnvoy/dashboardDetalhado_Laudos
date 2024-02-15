@@ -53,7 +53,7 @@ chart_data = filtered_df['Tipo de Laudo'].value_counts()
 st.bar_chart(chart_data)
 
 # Gráfico de pizza
-st.subheader("Gráfico de Pizza - Distribuição dos Laudos")
+st.subheader("Gráfico de pizza - Distribuição dos Laudos")
 pie_chart_data = filtered_df['Tipo de Laudo'].value_counts()
 fig = px.pie(names=pie_chart_data.index, values=pie_chart_data.values, title='Distribuição dos Laudos')
 st.plotly_chart(fig)
