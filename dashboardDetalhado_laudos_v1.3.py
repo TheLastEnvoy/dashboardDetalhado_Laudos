@@ -77,11 +77,8 @@ colunas.remove('Data')
 for coluna in colunas:
     totais_por_categoria[coluna] = df[coluna].value_counts()
 
-# Converter totais por categoria em uma lista de dicionários
-data = [{'Categoria': categoria, 'Total': total} for categoria, total in totais_por_categoria.items()]
-
-# Criar DataFrame a partir da lista de dicionários
-resumo_df = pd.DataFrame(data)
+# Criar DataFrame resumo
+resumo_df = pd.DataFrame(list(totais_por_categoria.items()), columns=['Categoria', 'Total']).fillna(0)
 
 # Exibir resumo
 st.subheader("Resumo dos Totais por Categoria")
