@@ -25,49 +25,45 @@ end_date = datetime.now().date()
 # Filtrar por técnico
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
 if selected_tecnico != "Todos":
-    filtered_df = df[df['Técnico'] == selected_tecnico]
-else:
-    filtered_df = df
+    df = df[df['Técnico'] == selected_tecnico]
 
 # Filtrar por município
 selected_municipio = st.sidebar.selectbox("Selecione um município:", municipios)
 if selected_municipio != "Todos":
-    filtered_df = df[df['Município'] == selected_municipio]
-else:
-    filtered_df = df
+    df = df[df['Município'] == selected_municipio]
 
 # Filtrar por assentamento
 selected_assentamento = st.sidebar.selectbox("Selecione um assentamento:", assentamentos)
 if selected_assentamento != "Todos":
-    filtered_df = filtered_df[filtered_df['Assentamento'] == selected_assentamento]
+    df = df[df['Assentamento'] == selected_assentamento]
 
 # Filtrar por tipo de laudo
 selected_tipo_laudo = st.sidebar.selectbox("Selecione um tipo de laudo:", tipos_de_laudo)
 if selected_tipo_laudo != "Todos":
-    filtered_df = filtered_df[filtered_df['Tipo de Laudo'] == selected_tipo_laudo]
+    df = df[df['Tipo de Laudo'] == selected_tipo_laudo]
 
 # Filtrar por data
 start_date = st.sidebar.date_input("Data inicial:", start_date)
 end_date = st.sidebar.date_input("Data final:", end_date)
-filtered_df['Data'] = pd.to_datetime(filtered_df['Data'], format='%d/%m/%Y').dt.date
-filtered_df = filtered_df[(filtered_df['Data'] >= start_date) & (filtered_df['Data'] <= end_date)]
+df['Data'] = pd.to_datetime(df['Data'], format='%d/%m/%Y').dt.date
+df = df[(df['Data'] >= start_date) & (df['Data'] <= end_date)]
 
 # Exibir tabela interativa
-st.write(filtered_df)
+st.write(df)
 
 # Exibir gráfico interativo
 st.subheader("Gráfico de barras - tipo de laudo")
-chart_data = filtered_df['Tipo de Laudo'].value_counts()
+chart_data = df['Tipo de Laudo'].value_counts()
 st.bar_chart(chart_data)
 
 # Gráfico de pizza
 st.subheader("Gráfico de pizza - tipo de laudo")
-pie_chart_data = filtered_df['Tipo de Laudo'].value_counts()
+pie_chart_data = df['Tipo de Laudo'].value_counts()
 fig = px.pie(names=pie_chart_data.index, values=pie_chart_data.values, title='Distribuição dos Laudos')
 st.plotly_chart(fig)
 
 # Calcular o total de laudos para cada tipo de laudo
-total_por_tipo_laudo = filtered_df['Tipo de Laudo'].value_counts()
+total_por_tipo_laudo = df['Tipo de Laudo'].value_counts()
 
 # Exibir quadro com os totais
 st.subheader("Total de Laudos por Tipo de Laudo")
