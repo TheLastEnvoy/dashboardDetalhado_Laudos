@@ -10,9 +10,10 @@ df = pd.read_excel(file_path)
 # Definir título do aplicativo
 st.title("Indicadores SO - Laudos de Supervisão Ocupacional (TED INCRA/UFPR)")
 
-st.subheader("pesquisar nomes com underline")
+# Definir título da tabela com informações gerais sobre os laudos
+st.subheader("Relação de laudos (pesquisar nomes com underline)")
 
-# Lista de todos os técnicos, tipos de laudo e assentamentos
+# Lista de todos os técnicos, assentamentos, tipos de laudo e municípios
 tecnicos = ['Todos'] + list(df['Técnico'].unique())
 assentamentos = ['Todos'] + list(df['Assentamento'].unique())
 tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
