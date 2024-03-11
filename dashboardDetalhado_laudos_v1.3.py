@@ -4,7 +4,7 @@ from datetime import datetime
 import plotly.express as px
 
 # Carregar os dados do Excel
-file_path = "laudos_SO_sharepoint_04032024.xlsx"
+file_path = "laudos_SO_sharepoint_11032024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
@@ -12,8 +12,9 @@ st.title("Relação de laudos")
 
 # Lista de todos os técnicos, tipos de laudo e assentamentos
 tecnicos = ['Todos'] + list(df['Técnico'].unique())
-tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
 assentamentos = ['Todos'] + list(df['Assentamento'].unique())
+tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
+municipios = ['Todos'] + list(df['Município'].unique())
 
 # Data inicial padrão: 01/01/2022
 start_date = datetime(2022, 1, 1).date()
@@ -25,6 +26,13 @@ end_date = datetime.now().date()
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
 if selected_tecnico != "Todos":
     filtered_df = df[df['Técnico'] == selected_tecnico]
+else:
+    filtered_df = df
+
+# Filtrar por município
+selected_municipio = st.sidebar.selectbox("Selecione um município:", municipios)
+if selected_municipio != "Todos":
+    filtered_df = df[df['Município'] == selected_municipio]
 else:
     filtered_df = df
 
