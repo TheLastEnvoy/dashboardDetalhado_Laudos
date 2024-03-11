@@ -75,4 +75,4 @@ total_por_tipo_laudo.loc[len(total_por_tipo_laudo)] = ['Total', total_de_laudos]
 
 # Exibir quadro com os totais
 st.subheader("Total de Laudos por Tipo de Laudo")
-st.write(total_por_tipo_laudo.to_string(index=False))
+st.write(total_por_tipo_laudo)
