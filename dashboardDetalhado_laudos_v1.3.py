@@ -65,3 +65,21 @@ st.subheader("Gráfico de pizza - tipo de laudo")
 pie_chart_data = filtered_df['Tipo de Laudo'].value_counts()
 fig = px.pie(names=pie_chart_data.index, values=pie_chart_data.values, title='Distribuição dos Laudos')
 st.plotly_chart(fig)
+
+# Dicionário para armazenar os totais de cada categoria
+totais_por_categoria = {}
+
+# Lista de todas as colunas exceto a coluna 'Data'
+colunas = df.columns.tolist()
+colunas.remove('Data')
+
+# Calcular o total de laudos para cada categoria
+for coluna in colunas:
+    totais_por_categoria[coluna] = df[coluna].value_counts()
+
+# Criar dataframe resumido
+resumo_df = pd.DataFrame(totais_por_categoria).fillna(0)
+
+# Exibir resumo
+st.subheader("Resumo dos Totais por Categoria")
+st.write(resumo_df)
