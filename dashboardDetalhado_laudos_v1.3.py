@@ -74,5 +74,5 @@ total_por_tipo_laudo.columns = ['Tipo de Laudo', 'Quantidade de Laudos']
 total_por_tipo_laudo.loc[len(total_por_tipo_laudo)] = ['Total', total_de_laudos]
 
 # Exibir quadro com os totais
-st.subheader("Total de Laudos por Tipo de Laudo")
+st.subheader("Quantidade de laudos por tipo")
 st.write(total_por_tipo_laudo)
