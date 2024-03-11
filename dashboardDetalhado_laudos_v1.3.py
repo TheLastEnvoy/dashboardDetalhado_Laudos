@@ -8,7 +8,7 @@ file_path = "laudos_SO_sharepoint_11032024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
-st.title("Indicadores SO - Laudos de Supervisão Ocupacional (TED INCRA/UFPR)")
+st.title("(SO - TED INCRA/UFPR) - Laudos de Supervisão Ocupacional ")
 
 # Definir título da tabela com informações gerais sobre os laudos
 st.subheader("Relação de laudos (pesquisar nomes com underline)")
