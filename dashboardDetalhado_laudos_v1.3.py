@@ -66,23 +66,9 @@ pie_chart_data = filtered_df['Tipo de Laudo'].value_counts()
 fig = px.pie(names=pie_chart_data.index, values=pie_chart_data.values, title='Distribuição dos Laudos')
 st.plotly_chart(fig)
 
-# Dicionário para armazenar os totais de cada categoria
-totais_por_categoria = {}
+# Calcular o total de laudos para cada tipo de laudo
+total_por_tipo_laudo = filtered_df['Tipo de Laudo'].value_counts()
 
-# Lista de todas as colunas exceto a coluna 'Data'
-colunas = df.columns.tolist()
-colunas.remove('Data')
-
-# Calcular o total de laudos para cada categoria
-for coluna in colunas:
-    totais_por_categoria[coluna] = df[coluna].value_counts()
-
-# Converter o dicionário em uma lista de tuplas
-data = [(k, v) for k, v in totais_por_categoria.items()]
-
-# Criar DataFrame resumo
-resumo_df = pd.DataFrame(data, columns=['Categoria', 'Total']).fillna(0)
-
-# Exibir resumo
-st.subheader("Resumo dos Totais por Categoria")
-st.write(resumo_df)
+# Exibir quadro com os totais
+st.subheader("Total de Laudos por Tipo de Laudo")
+st.write(total_por_tipo_laudo)
