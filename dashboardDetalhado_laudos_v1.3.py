@@ -68,11 +68,11 @@ total_por_tipo_laudo = df['Tipo de Laudo'].value_counts()
 # Calcular o total de laudos
 total_de_laudos = total_por_tipo_laudo.sum()
 
-# Adicionar o total de laudos ao DataFrame
-total_por_tipo_laudo = total_por_tipo_laudo.rename(index={'count': 'Quantidade de Laudos'})
+# Renomear a coluna "count" para "Quantidade de Laudos"
+total_por_tipo_laudo = total_por_tipo_laudo.rename_axis('Tipo de Laudo').reset_index(name='Quantidade de Laudos')
 
 # Adicionar o total de laudos ao DataFrame
-total_por_tipo_laudo['Total de Laudos'] = total_de_laudos
+total_por_tipo_laudo.loc['Total'] = pd.Series({'Quantidade de Laudos': total_de_laudos})
 
 # Exibir quadro com os totais
 st.subheader("Total de Laudos por Tipo de Laudo")
