@@ -69,6 +69,9 @@ total_por_tipo_laudo = df['Tipo de Laudo'].value_counts()
 total_de_laudos = total_por_tipo_laudo.sum()
 
 # Adicionar o total de laudos ao DataFrame
+total_por_tipo_laudo = total_por_tipo_laudo.rename(index={'count': 'Quantidade de Laudos'})
+
+# Adicionar o total de laudos ao DataFrame
 total_por_tipo_laudo['Total de Laudos'] = total_de_laudos
 
 # Exibir quadro com os totais
