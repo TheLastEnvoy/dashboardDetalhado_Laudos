@@ -78,7 +78,7 @@ for coluna in colunas:
     totais_por_categoria[coluna] = df[coluna].value_counts()
 
 # Criar dataframe resumido
-resumo_df = pd.DataFrame(totais_por_categoria).fillna(0)
+resumo_df = pd.DataFrame.from_dict(totais_por_categoria, orient='index').fillna(0)
 
 # Exibir resumo
 st.subheader("Resumo dos Totais por Categoria")
