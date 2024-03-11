@@ -65,6 +65,12 @@ st.plotly_chart(fig)
 # Calcular o total de laudos para cada tipo de laudo
 total_por_tipo_laudo = df['Tipo de Laudo'].value_counts()
 
+# Calcular o total de laudos
+total_de_laudos = total_por_tipo_laudo.sum()
+
+# Adicionar o total de laudos ao DataFrame
+total_por_tipo_laudo['Total de Laudos'] = total_de_laudos
+
 # Exibir quadro com os totais
 st.subheader("Total de Laudos por Tipo de Laudo")
 st.write(total_por_tipo_laudo)
