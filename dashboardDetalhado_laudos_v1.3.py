@@ -74,7 +74,7 @@ total_por_tipo_laudo.columns = ['Tipo de Laudo', 'Quantidade de Laudos']
 total_por_tipo_laudo.loc[len(total_por_tipo_laudo)] = ['Total', total_de_laudos]
 
 # Remover a coluna de índice
-total_por_tipo_laudo = total_por_tipo_laudo.drop('index', axis=1)
+total_por_tipo_laudo = total_por_tipo_laudo.drop(total_por_tipo_laudo.columns[0], axis=1)
 
 # Exibir quadro com os totais
 st.subheader("Total de Laudos por Tipo de Laudo")
