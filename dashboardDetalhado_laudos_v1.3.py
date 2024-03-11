@@ -10,6 +10,8 @@ df = pd.read_excel(file_path)
 # Definir título do aplicativo
 st.title("Relação de laudos - pesquisar nomes com underline")
 
+st.subheader("pesquisar nomes com underline")
+
 # Lista de todos os técnicos, tipos de laudo e assentamentos
 tecnicos = ['Todos'] + list(df['Técnico'].unique())
 assentamentos = ['Todos'] + list(df['Assentamento'].unique())
