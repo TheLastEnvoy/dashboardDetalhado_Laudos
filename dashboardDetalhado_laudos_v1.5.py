@@ -101,7 +101,7 @@ st.subheader("Quantidade de laudos por tipo")
 st.write(total_por_tipo_laudo)
 
 # Adicionar o quadro de contagem de lotes atendidos por tipo de laudo
-st.subheader("Contagem de lotes atendidos por tipo de laudo")
+st.subheader("Quantidade de lotes atendidos por tipo de laudo")
 
 # Agrupar por Lote, Assentamento e Tipo de Laudo, considerando apenas o primeiro laudo de cada combinação
 df_lotes = df.drop_duplicates(subset=['Lote', 'Assentamento', 'Tipo de Laudo'])
