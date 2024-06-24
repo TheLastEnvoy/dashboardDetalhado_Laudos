@@ -110,5 +110,9 @@ df_lotes = df.drop_duplicates(subset=['Lote', 'Assentamento', 'Tipo de Laudo'])
 lotes_por_tipo_laudo = df_lotes['Tipo de Laudo'].value_counts().reset_index()
 lotes_por_tipo_laudo.columns = ['Tipo de Laudo', 'Quantidade de Lotes']
 
+# Calcular o total de lotes atendidos
+total_lotes_atendidos = lotes_por_tipo_laudo['Quantidade de Lotes'].sum()
+lotes_por_tipo_laudo.loc[len(lotes_por_tipo_laudo)] = ['Total', total_lotes_atendidos]
+
 # Exibir o quadro
 st.write(lotes_por_tipo_laudo)
